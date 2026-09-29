@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ClassTrack</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+    <h1>ClassTrack</h1>
+
+    <a href="/">Students</a>
+
+    <a href="/add">Add Student</a>
+
+    <a href="/attendance">Attendance</a>
+
+    <a href="/grades">Grades</a>
+
+    <a href="/statistics">Statistics</a>
+
+</nav>
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+</body>
+
+</html>
