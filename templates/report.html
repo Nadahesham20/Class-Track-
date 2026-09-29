@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Student Report</h2>
+
+<div class="card">
+
+    <h3>
+        {{ student.name }}
+    </h3>
+
+    <p>
+        <strong>Student Code:</strong>
+        {{ student.id }}
+    </p>
+
+    <p>
+        <strong>Attendance:</strong>
+        {{ "%.1f"|format(attendance_percentage) }}%
+    </p>
+
+    <p>
+        <strong>Present:</strong>
+        {{ present }}
+        /
+        {{ total_lectures }}
+    </p>
+
+    <p>
+        <strong>Average Grade:</strong>
+        {{ "%.1f"|format(average_grade) }}
+    </p>
+
+</div>
+
+
+<h3>Grades</h3>
+
+<table>
+
+    <tr>
+
+        <th>Assessment</th>
+        <th>Grade</th>
+
+    </tr>
+
+    {% for grade in grades %}
+
+    <tr>
+
+        <td>
+            {{ grade.assessment }}
+        </td>
+
+        <td>
+            {{ grade.grade }}
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+
+        <td colspan="2">
+            No grades yet.
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
