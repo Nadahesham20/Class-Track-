@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Students</h2>
+
+<div class="top">
+
+    <form action="/search" method="GET">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search student..."
+            value="{{ search|default('') }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    <a class="button" href="/add">
+        + Add Student
+    </a>
+
+</div>
+
+
+<table>
+
+    <tr>
+
+        <th>Code</th>
+
+        <th>Student Name</th>
+
+        <th>Actions</th>
+
+    </tr>
+
+
+    {% for student in students %}
+
+    <tr>
+
+        <td>
+            {{ student.id }}
+        </td>
+
+        <td>
+            {{ student.name }}
+        </td>
+
+        <td>
+
+            <a href="/report/{{ student.id }}">
+                Report
+            </a>
+
+            |
+
+            <a href="/edit/{{ student.id }}">
+                Edit
+            </a>
+
+            |
+
+            <a
+                href="/delete/{{ student.id }}"
+                class="delete"
+                onclick="return confirm('Delete this student?')"
+            >
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+
+        <td colspan="3">
+            No students found.
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
