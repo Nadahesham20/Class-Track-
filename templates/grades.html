@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Grades</h2>
+
+<form method="POST" class="form">
+
+    <label>
+        Student
+    </label>
+
+    <select name="student_id" required>
+
+        {% for student in students %}
+
+        <option value="{{ student.id }}">
+            {{ student.id }} - {{ student.name }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+
+    <label>
+        Assessment
+    </label>
+
+    <select name="assessment" required>
+
+        <option value="Quiz">
+            Quiz
+        </option>
+
+        <option value="Assignment">
+            Assignment
+        </option>
+
+        <option value="Midterm">
+            Midterm
+        </option>
+
+        <option value="Final">
+            Final
+        </option>
+
+    </select>
+
+
+    <label>
+        Grade
+    </label>
+
+    <input
+        type="number"
+        name="grade"
+        min="0"
+        max="100"
+        step="0.01"
+        required
+    >
+
+
+    <button type="submit">
+        Add Grade
+    </button>
+
+</form>
+
+
+<h2>All Grades</h2>
+
+<table>
+
+    <tr>
+
+        <th>Code</th>
+        <th>Student</th>
+        <th>Assessment</th>
+        <th>Grade</th>
+
+    </tr>
+
+
+    {% for grade in grades %}
+
+    <tr>
+
+        <td>
+            {{ grade.student_id }}
+        </td>
+
+        <td>
+            {{ grade.name }}
+        </td>
+
+        <td>
+            {{ grade.assessment }}
+        </td>
+
+        <td>
+            {{ grade.grade }}
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+
+        <td colspan="4">
+            No grades yet.
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
