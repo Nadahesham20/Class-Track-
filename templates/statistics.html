@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Class Statistics</h2>
+
+<div class="statistics">
+
+    <div class="card">
+
+        <h3>Total Students</h3>
+
+        <p>
+            {{ total_students }}
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>Average Attendance</h3>
+
+        <p>
+            {{ "%.1f"|format(average_attendance) }}%
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>Average Grade</h3>
+
+        <p>
+            {{ "%.1f"|format(average_grade) }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
